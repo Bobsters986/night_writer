@@ -1,13 +1,11 @@
+message_file = ARGV[0]
+new_file = ARGV[1]
 
-message_file = File.open(ARGV[0], "r")
-new_file = File.new(ARGV[1], "w")
+m_file = File.open("./text_files/#{message_file}", "r")
+string = m_file.read
+n_file = File.new("./text_files/#{new_file}", "w")
 
-new_file.write(message_file.read.upcase)
-new_file.close
+n_file.write(string.upcase)
+n_file.close
 
-lines = File.readlines(ARGV[1])
-line_count = lines.size
-text = lines.join
-num_characters = text.length
-
-puts "Created '#{ARGV[1]}' containing #{num_characters} characters"
+puts "Created '#{new_file}' containing #{string.length} characters"
