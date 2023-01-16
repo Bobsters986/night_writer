@@ -4,6 +4,11 @@ RSpec.describe EngToBraille do
   let(:translator) { EngToBraille.new }
 
   describe '#initialize' do
+
+    it 'exists' do
+      expect(translator).to be_an(EngToBraille)
+    end
+
     it 'has an english to braille dictionary' do
       expected = {
       'a' => ['0.', '..', '..'],
@@ -38,7 +43,7 @@ RSpec.describe EngToBraille do
     end
   end
 
-  describe ' it can translate letters and words' do
+  describe 'it can translate letters and words' do
     it 'can return an array of #braille_array letters ' do
       expect(translator.braille_array("a")).to eq([['0.', '..', '..']])
       expect(translator.braille_array("ab")).to eq([['0.', '..', '..'], ['0.', '0.', '..']])
@@ -48,6 +53,13 @@ RSpec.describe EngToBraille do
       expect(translator.to_braille("a")).to eq("0.\n..\n..")
       expect(translator.to_braille("ab")).to eq("0.0.\n..0.\n....")
       expect(translator.to_braille("hello")).to eq("0.0.0.0.0.\n00.00.0..0\n....0.0.0.")
+    end
+
+    it 'will line break at 40 alpha/80 braille characters' do
+      long_line = "aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbccccc"
+      expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n........................................0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n0000000000\n..........\n.........."
+
+      expect(translator.to_braille(long_line)).to eq(expected)
     end
   end
 
