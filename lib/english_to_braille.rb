@@ -1,6 +1,8 @@
 class EngToBraille
+  attr_accessor :dictionary
 
-  @translator = {
+  def initialize
+  @dictionary = {
     'a' => ['0.', '..', '..'],
     'b' => ['0.', '0.', '..'],
     'c' => ['00', '..', '..'],
@@ -29,9 +31,23 @@ class EngToBraille
     'z' => ['0.', '.0', '00'],
     ' ' => ['..', '..', '..']
   }
+  end
 
-  def self.to_braille(letter)
-    @translator[letter]
+  def braille_array(text_string)
+    text_arr = text_string.chars 
+    message = text_arr.map do |letter|
+      @dictionary[letter]
+    end
+    message
+  end
+
+  def to_braille(input)
+    message = braille_array(input)
+    translate = message.transpose.map do |letter|
+      letter.join
+    end
+    # require 'pry'; binding.pry
+    translate.join("\n")
   end
 end
 
