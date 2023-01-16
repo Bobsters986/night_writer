@@ -30,4 +30,9 @@ class EngToBraille
     ' ' => ['..', '..', '..']
   }
 
+  def self.to_braille(letter)
+    @translator[letter]
+  end
 end
+
+  
