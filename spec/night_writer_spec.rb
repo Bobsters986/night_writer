@@ -25,5 +25,4 @@ RSpec.describe 'night_writer' do
     
   #   expect(translated_string).to eq("HERE IS A MESSAGE TO BE TRANSLATED")
   # end
-
 end
