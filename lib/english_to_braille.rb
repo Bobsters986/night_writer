@@ -35,18 +35,19 @@ class EngToBraille
 
   def braille_array(text_string)
     text_arr = text_string.chars 
-    message = text_arr.map do |letter|
+    braille_arr = text_arr.map do |letter|
       @dictionary[letter]
     end
-    message
+    braille_arr
   end
 
   def to_braille(input)
     message = braille_array(input)
-    translate = message.transpose.map do |letter|
-      letter.join
+    translate = message.each_slice(40).map do |slice|
+      slice.transpose.map do |letter|
+        letter.join
+      end.join("\n")
     end
-    # require 'pry'; binding.pry
     translate.join("\n")
   end
 end
