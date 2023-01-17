@@ -35,6 +35,7 @@ class EngToBraille
 
   def braille_array(text_string)
     text_arr = text_string.chars 
+    
     braille_arr = text_arr.map do |letter|
       @dictionary[letter]
     end
@@ -43,6 +44,7 @@ class EngToBraille
 
   def to_braille(input)
     message = braille_array(input)
+
     translate = message.each_slice(40).map do |slice|
       slice.transpose.map do |letter|
         letter.join
