@@ -42,10 +42,16 @@ RSpec.describe BrailleToEng do
     end
   end
 
-  describe 'converting braille to english lettes' do
+  describe 'converting braille to english letters and words' do
     it '#to_english_letter' do
       braille_letter = "00\n..\n0."
       expect(translator2.to_english_letter(braille_letter)).to eq("m")
+    end
+
+    it '#to_english_word' do
+      braille_word = "000..0.00.000.\n...00.0...00.0\n0...0.0......."
+      expect(translator2.to_english_word(braille_word)).to eq("message")
+      
     end
   end
 end
