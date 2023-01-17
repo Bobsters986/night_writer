@@ -9,6 +9,6 @@ to_eng_file = File.new("./text_files/#{new_file}", "w")
 
 braille_words = b_file.read
 
-to_eng_file.write(translate.to_english_word(braille_words))
+to_eng_file.write(translate.to_english_sentence(braille_words))
 
 puts "Created '#{new_file}' containing #{braille_words.length} characters"
