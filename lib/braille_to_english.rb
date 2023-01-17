@@ -32,4 +32,9 @@ class BrailleToEng
       ' ' => ['..', '..', '..']
   }.invert
   end
+
+  def to_english_letter(braille_string)
+    braille_arr = braille_string.split("\n")
+    @inv_dictionary[braille_arr]
+  end
 end
