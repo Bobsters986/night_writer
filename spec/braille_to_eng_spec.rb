@@ -1,4 +1,5 @@
 require './lib/braille_to_english'
+require './spec/spec_helper'
 
 RSpec.describe BrailleToEng do
   let(:translator2) { BrailleToEng.new }
@@ -58,20 +59,20 @@ RSpec.describe BrailleToEng do
       ["0.", "..", "0.", "0.", "..", "..", ".."]])
     end
 
-    it '#to_braille_letters' do
+    it '#to_braille_letters array of arrays' do
       braille_word = "000..0.00.000.\n...00.0...00.0\n0...0.0......."
       expect(translator2.to_braille_letters(braille_word)).to eq([["00", "..", "0."], 
       ["0.", ".0", ".."], [".0", "0.", "0."], [".0", "0.", "0."],
       ["0.", "..", ".."], ["00", "00", ".."],["0.", ".0", ".."]])
     end
 
-    it '#to_english_sentence' do
+    it '#to_english_sentence that line breaks at 40 english characters' do
       braille_sentence = ".00.0...000..0000...0.0.0..000..000.00...00.0000.0..0.0.0.0....00.0...0.0.0.00..\n0000.0..00..0.......0.00.000.0..0..0....00....0.0....00..000..0000.0..0....0.0..\n0.......0.00....0.....0.0..00.....0.00....000.0.0...0.00..0...0.......0...0000..\n000.00\n.0.000\n..0..."
 
       braille_word = "000..0.00.000.\n...00.0...00.0\n0...0.0......."
 
       expect(translator2.to_english_sentence(braille_word)).to eq("message")
-      expect(translator2.to_english_sentence(braille_sentence)).to eq("the quick brown fox jumps over the lazy dog")
+      expect(translator2.to_english_sentence(braille_sentence)).to eq("the quick brown fox jumps over the lazy \ndog")
     end
   end
 end
