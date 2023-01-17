@@ -30,7 +30,7 @@ class BrailleToEng
       'y' => ['00', '.0', '00'],
       'z' => ['0.', '.0', '00'],
       ' ' => ['..', '..', '..']
-  }.invert
+    }.invert
   end
 
   def to_english_letter(braille_string)
