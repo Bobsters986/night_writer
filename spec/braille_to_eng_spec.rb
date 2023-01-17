@@ -4,7 +4,6 @@ RSpec.describe BrailleToEng do
   let(:translator2) { BrailleToEng.new }
 
   describe '#initialize' do
-
     it 'exists' do
       expect(translator2).to be_a(BrailleToEng)
     end
@@ -40,6 +39,13 @@ RSpec.describe BrailleToEng do
       ["..", "..", ".."] => " "
       }
     expect(translator2.inv_dictionary).to eq(expected)
+    end
+  end
+
+  describe 'converting braille to english lettes' do
+    it '#to_english_letter' do
+      braille_letter = "00\n..\n0."
+      expect(translator2.to_english_letter(braille_letter)).to eq("m")
     end
   end
 end
