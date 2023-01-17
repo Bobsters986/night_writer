@@ -1,6 +1,4 @@
-require './spec/spec_helper'
-
-RSpec.describe 'night_writer' do
+describe 'night_writer' do
   let(:argv) { ['a_test_message.txt', 'braille_test.txt'] }
 
   it 'can open and read files' do

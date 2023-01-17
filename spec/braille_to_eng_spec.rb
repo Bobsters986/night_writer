@@ -1,4 +1,4 @@
-require './lib/braille_to_english'
+# require './lib/braille_to_english'
 require './spec/spec_helper'
 
 RSpec.describe BrailleToEng do
