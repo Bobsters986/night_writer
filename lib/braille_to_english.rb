@@ -40,28 +40,31 @@ class BrailleToEng
 
   def to_character_rows(braille_string)
     braille_arr = braille_string.split("\n")
+
     row_array = braille_arr.map do |string|
       string.chars.each_slice(2).map do |char|
         char.join
       end
     end
-    row_array
   end
   
   def to_braille_letters(braille_string)
     row_array = to_character_rows(braille_string)
+
     braille_letters = row_array.each_slice(3).flat_map do |letter|
       letter.transpose
     end
-    braille_letters
   end
   
   def to_english_sentence(braille_string)
     braille_letters = to_braille_letters(braille_string)
+
     eng_letters = braille_letters.flat_map do |b_let|
       @inv_dictionary[b_let]
-      # require 'pry'; binding.pry
-    end
-    eng_letters.join
+    end.join
+    
+    new_line_40 = eng_letters.chars.each_slice(40).map do |letter|
+      letter.join
+    end.join("\n")
   end
 end
