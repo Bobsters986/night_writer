@@ -37,4 +37,22 @@ class BrailleToEng
     braille_arr = braille_string.split("\n")
     @inv_dictionary[braille_arr]
   end
+
+  def to_character_rows(braille_string)
+    braille_arr = braille_string.split("\n")
+    row_arr = braille_arr.map do |string|
+      string.chars.each_slice(2).map do |char|
+        char.join
+      end
+    end
+    row_arr
+  end
+
+  def to_english_word(input)
+    row_arr = to_character_rows(input)
+    eng_letters = row_arr.transpose.map do |b_let|
+      @inv_dictionary[b_let]
+    end
+    eng_letters.join
+  end
 end
