@@ -48,10 +48,17 @@ RSpec.describe BrailleToEng do
       expect(translator2.to_english_letter(braille_letter)).to eq("m")
     end
 
+    it '#to_character_rows' do
+      braille_word = "000..0.00.000.\n...00.0...00.0\n0...0.0......."
+      expect(translator2.to_character_rows(braille_word)).to eq(
+      [["00", "0.", ".0", ".0", "0.", "00", "0."],
+      ["..", ".0", "0.", "0.", "..", "00", ".0"],
+      ["0.", "..", "0.", "0.", "..", "..", ".."]])
+    end
+
     it '#to_english_word' do
       braille_word = "000..0.00.000.\n...00.0...00.0\n0...0.0......."
       expect(translator2.to_english_word(braille_word)).to eq("message")
-      
     end
   end
 end
