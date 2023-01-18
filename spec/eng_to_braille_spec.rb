@@ -5,7 +5,6 @@ RSpec.describe EngToBraille do
   let(:translator) { EngToBraille.new }
 
   describe '#initialize' do
-
     it 'exists' do
       expect(translator).to be_an(EngToBraille)
     end
@@ -63,5 +62,4 @@ RSpec.describe EngToBraille do
       expect(translator.to_braille(long_line)).to eq(expected)
     end
   end
-
 end

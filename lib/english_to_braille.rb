@@ -53,5 +53,3 @@ class EngToBraille
     translate.join("\n")
   end
 end
-
-  
